@@ -1,7 +1,7 @@
 "use client"
 
 import { Heading } from '@/components/heading'
-import { MessageSquare } from 'lucide-react'
+import { Music } from 'lucide-react'
 import React, { useState } from 'react'
 import * as z from "zod"
 import { formSchema } from './constants'
@@ -15,17 +15,16 @@ import { ChatCompletionMessageParam } from 'openai/resources/index.mjs'
 import axios from "axios"
 import { Empty } from '@/components/empty'
 import { Loader } from '@/components/loader'
-import { cn } from '@/lib/utils'
 
 type Message = {
     role: 'user' | 'assistant';
     content: string;
 };
 
-const ConversationPage = () => {
+const MusicPage = () => {
     const router = useRouter()
 
-    const [messages, setMessages] = useState<Message[]>([])
+    const [music, setMusic] = useState<string>()
     const form = useForm({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -37,38 +36,24 @@ const ConversationPage = () => {
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
         console.log(values);
         try {
-          // Prepare the prompt for the API call
-          const prompt = values.prompt;
-    
-          // Send the request to your Next.js API route
-          const response = await axios.post("/api/conversation", { prompt });
-    
-          // Extract the generated text from the response
-          const generatedText = response.data.text;
-    
-          // Create new message objects for the user input and the AI's response
-          const userMessage: Message = {
-            role: "user",
-            content: prompt,
-          };
-          const aiMessage: Message = {
-            role: "assistant",
-            content: generatedText,
-          };
-    
-          // Update the state with the new messages
-          setMessages((current) => [...current, userMessage, aiMessage]);
-    
-          // Reset the form
-          form.reset();
+
+            setMusic(undefined)
+            // Send the request to your Next.js API route
+            const response = await axios.post("/api/music", values);
+
+
+            // Update the state with the new messages
+            setMusic(response.data.audio)
+            // Reset the form
+            form.reset();
         } catch (error: any) {
-          // Handle any errors that occur during the request
-          console.log(error);
+            // Handle any errors that occur during the request
+            console.log(error);
         } finally {
-          // Refresh the router to reflect any changes
-          router.refresh();
+            // Refresh the router to reflect any changes
+            router.refresh();
         }
-      };
+    };
 
     // const onSubmit = async (values: z.infer<typeof formSchema>) => {
     //     console.log(values)
@@ -94,7 +79,7 @@ const ConversationPage = () => {
 
     return (
         <div>
-            <Heading title='Conversation' description='Advanced conversation model' icon={MessageSquare} iconColor='text-violet-500' bgColor='bg-violet-500/10' />
+            <Heading title='Music Generation' description='Create beautiful audio' icon={Music} iconColor='text-emerald-500' bgColor='bg-emerald-500/10' />
             <div className="px-4 lg:px-8">
                 <div className="">
                     <Form {...form}>
@@ -104,7 +89,7 @@ const ConversationPage = () => {
                                     <FormControl className='m-0 p-0'>
                                         <Input className='border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent'
                                             disabled={isLoading}
-                                            placeholder='Start a conversation'
+                                            placeholder='Play fur elise...'
                                             {...field}
                                         />
                                     </FormControl>
@@ -122,15 +107,11 @@ const ConversationPage = () => {
                             <Loader />
                         </div>
                     )}
-                    {messages.length === 0 && !isLoading && (
-                        <Empty label="No conversation started. " />
+                    {!music && !isLoading && (
+                        <Empty label="No music yet. " />
                     )}
-                    <div className="flex flex-col-reverse gap-y-4">
-                        {messages.map((message) => (
-                            <div className={cn("p-8 w-full flex items-start")} key={message.content}>
-                                <strong>{message.role === 'user' ? 'You' : 'AI'}:</strong> {message.content}
-                            </div>
-                        ))}
+                    <div className="">
+                        Music will be generated here
                     </div>
                 </div>
             </div>
@@ -138,4 +119,4 @@ const ConversationPage = () => {
     )
 }
 
-export default ConversationPage
+export default MusicPage
