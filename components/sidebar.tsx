@@ -43,17 +43,17 @@ const routes = [
         href: '/code',
         color: 'text-green-500'
     },
-    {
-        label: "Settings",
-        icon: Settings,
-        href: '/settings',
-    }
+    // {
+    //     label: "Settings",
+    //     icon: Settings,
+    //     href: '/settings',
+    // }
 ]
 const Sidebar = () => {
     const pathname = usePathname()
-
+    // bg-[#111827]
     return (
-        <div className='space-y-4 py-4 flex flex-col h-full bg-[#111827] text-white'>
+        <div className='space-y-4 py-4 flex flex-col h-full bg-blue-900 text-white'>
             <div className="px-3 py-2 flex-1">
                 <Link href='/dashboard' className='flex items-center pl-3 mb-14'>
                     <div className="relative w-44 h-12 mr-4">

@@ -23,7 +23,7 @@ export async function POST(request: Request) {
       return new NextResponse("Prompt is required", {status:400})
     }
 
-
+    
     return NextResponse.json({ text });
   } catch (error) {
     console.error(error);
