@@ -81,7 +81,7 @@ const VideoPage = () => {
 
     return (
         <div>
-            <Heading title='Video Generation' description='Make stunnning videos' icon={VideoIcon} iconColor='text-orange-7 00' bgColor='bg-orange-7 00/10' />
+            <Heading title='Image Generation' description='Create stunning images' icon={VideoIcon} iconColor='text-orange-7 00' bgColor='bg-orange-7 00/10' />
             <div className="px-4 lg:px-8">
                 <div className="">
                     <Form {...form}>
@@ -110,7 +110,7 @@ const VideoPage = () => {
                         </div>
                     )}
                     {!video && !isLoading && (
-                        <Empty label="No video created. " />
+                        <Empty label="No images yet. " />
                     )}
                     {video && (
                         <Image alt='pic' src={video} width={400} height={400} />

@@ -55,27 +55,6 @@ const MusicPage = () => {
         }
     };
 
-    // const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    //     console.log(values)
-    //     try {
-    //         const userMessage = {
-    //             role: "user",
-    //             content: values.prompt
-    //         }
-    //         const newMessages = [...messages, userMessage]
-
-    //         const response = await axios.post("/api/conversation", { messages: newMessages })
-
-    //         setMessages((current) => [...current, userMessage, response.data])
-
-    //         form.reset()
-    //     } catch (error: any) {
-    //         // TODO: Open Pro Model
-    //         console.log(error)
-    //     } finally {
-    //         router.refresh()
-    //     }
-    // }
 
     return (
         <div>
