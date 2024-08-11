@@ -39,7 +39,7 @@ const VideoPage = () => {
 
             setVideo(undefined)
             // Send the request to your Next.js API route
-            const response = await axios.post("/api/video", values);
+            const response = await axios.post("/api/image", values);
 
 
             // Update the state with the new messages
@@ -56,28 +56,6 @@ const VideoPage = () => {
             router.refresh();
         }
     };
-
-    // const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    //     console.log(values)
-    //     try {
-    //         const userMessage = {
-    //             role: "user",
-    //             content: values.prompt
-    //         }
-    //         const newMessages = [...messages, userMessage]
-
-    //         const response = await axios.post("/api/conversation", { messages: newMessages })
-
-    //         setMessages((current) => [...current, userMessage, response.data])
-
-    //         form.reset()
-    //     } catch (error: any) {
-    //         // TODO: Open Pro Model
-    //         console.log(error)
-    //     } finally {
-    //         router.refresh()
-    //     }
-    // }
 
     return (
         <div>
@@ -97,7 +75,7 @@ const VideoPage = () => {
                                     </FormControl>
                                 </FormItem>
                             )} />
-                            <Button className='col-span-12 lg:col-span-2 w-full' disabled={isLoading}>
+                            <Button className='col-span-12 lg:col-span-12 w-full' disabled={isLoading}>
                                 Generate
                             </Button>
                         </form>

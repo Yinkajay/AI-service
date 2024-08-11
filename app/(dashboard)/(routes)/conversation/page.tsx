@@ -116,7 +116,7 @@ const ConversationPage = () => {
                                     </FormControl>
                                 </FormItem>
                             )} />
-                            <Button className='col-span-12 lg:col-span-2 w-full' disabled={isLoading}>
+                            <Button className='col-span-12 lg:col-span-12 w-full' disabled={isLoading}>
                                 Generate
                             </Button>
                         </form>

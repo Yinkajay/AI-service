@@ -45,7 +45,7 @@ const VideoPage = () => {
             // Update the state with the new messages
 
             console.log(response)
-            setVideo(response.data[0])
+            setVideo(response.data)
             // Reset the form
             form.reset();
         } catch (error: any) {
@@ -97,7 +97,7 @@ const VideoPage = () => {
                                     </FormControl>
                                 </FormItem>
                             )} />
-                            <Button className='col-span-12 lg:col-span-2 w-full' disabled={isLoading}>
+                            <Button className='col-span-12 lg:col-span-12 w-full' disabled={isLoading}>
                                 Generate
                             </Button>
                         </form>
@@ -113,10 +113,9 @@ const VideoPage = () => {
                         <Empty label="No video created. " />
                     )}
                     {video && (
-                        <Image alt='pic' src={video} width={400} height={400} />
-                        // <video className='w-full aspect-video mt-8 rounded-lg border bg-black' controls>
-                        //     <source src={video} />
-                        // </video>
+                        <video className='w-full aspect-video mt-8 rounded-lg border bg-black' controls>
+                            <source src={video} />
+                        </video>
                     )
 
                     }
