@@ -67,7 +67,7 @@ const ConversationPage = () => {
             setMessages((current) => [...current, userMessage, aiMessage]);
 
             // Reset the form
-            form.reset();
+            // form.reset();
         } catch (error: any) {
             // Handle any errors that occur during the request
             console.log(error);

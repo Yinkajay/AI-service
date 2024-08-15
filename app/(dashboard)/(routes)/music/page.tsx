@@ -41,9 +41,9 @@ const MusicPage = () => {
 
             console.log(response)
             // Update the state with the new messages
-            setMusic(response.data.output.audio)
+            setMusic(response.data.output)
             // Reset the form
-            form.reset();
+            // form.reset();
         } catch (error: any) {
             // Handle any errors that occur during the request
             console.log(error);

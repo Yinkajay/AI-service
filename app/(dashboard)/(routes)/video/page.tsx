@@ -41,13 +41,10 @@ const VideoPage = () => {
             // Send the request to your Next.js API route
             const response = await axios.post("/api/video", values);
 
-
-            // Update the state with the new messages
-
             console.log(response)
             setVideo(response.data)
             // Reset the form
-            form.reset();
+            // form.reset();
         } catch (error: any) {
             // Handle any errors that occur during the request
             console.log(error);
@@ -56,28 +53,6 @@ const VideoPage = () => {
             router.refresh();
         }
     };
-
-    // const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    //     console.log(values)
-    //     try {
-    //         const userMessage = {
-    //             role: "user",
-    //             content: values.prompt
-    //         }
-    //         const newMessages = [...messages, userMessage]
-
-    //         const response = await axios.post("/api/conversation", { messages: newMessages })
-
-    //         setMessages((current) => [...current, userMessage, response.data])
-
-    //         form.reset()
-    //     } catch (error: any) {
-    //         // TODO: Open Pro Model
-    //         console.log(error)
-    //     } finally {
-    //         router.refresh()
-    //     }
-    // }
 
     return (
         <div>

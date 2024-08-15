@@ -47,7 +47,7 @@ const VideoPage = () => {
             console.log(response)
             setVideo(response.data[0])
             // Reset the form
-            form.reset();
+            // form.reset();
         } catch (error: any) {
             // Handle any errors that occur during the request
             console.log(error);
@@ -91,7 +91,7 @@ const VideoPage = () => {
                         <Empty label="No images yet. " />
                     )}
                     {video && (
-                        <Image alt='pic' src={video} width={400} height={400} />
+                        <Image alt='pic' src={video} className='mx-auto p-4 border border-gray-600 rounded-md' width={400} height={400} />
                         // <video className='w-full aspect-video mt-8 rounded-lg border bg-black' controls>
                         //     <source src={video} />
                         // </video>
